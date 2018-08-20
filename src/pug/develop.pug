@@ -1,0 +1,64 @@
+//----------------------------------------------------
+//- Page: Develop
+//----------------------------------------------------
+
+doctype html
+html(lang="ja")
+  head
+    meta(charset="UTF-8")
+    title= "納品リスト｜" + site.title
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover")
+    meta(name="format-detection" content="telephone=no, email=no, address=no")
+    meta(http-equiv="x-ua-compatible" content="ie=edge")
+    link(rel="apple-touch-icon" href="./"+path.img+"/apple-touch-icon.png")
+    link(rel="icon" href="./"+path.img+"/favicon.png")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/yakuhanjp@3.0.0/dist/css/yakuhanjp_s.min.css")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/musubii@6.4.0/docs/css/musubii.min.css")
+    style.
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 1em 1em 4em;
+        background-color: #eceeef;
+        font-family: YakuHanJPs, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans Japanese", Meiryo, "Yu Gothic Medium", sans-serif;
+      }
+      .card {
+        min-width: 50vw;
+        background-color: #fff;
+        border-radius: 0.25em;
+        box-shadow: 0 48px 96px rgba(40, 57, 62, 0.07), 0 16px 32px rgba(40, 57, 62, 0.07), 0 4px 16px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+      .card > .title {
+        padding: 1em 1em 0.125em;
+        color: #fff;
+        font-weight: 700;
+      }
+      .card > .subtitle {
+        padding: 0.125em 1em 1em;
+        color: #fff;
+      }
+      .card > .inner {
+        padding: 1em;
+      }
+      .list {
+        line-height: 2;
+      }
+  body
+    .card
+      h1.title(style="background-color: " + project.color)
+        span 納品リスト
+      h2.subtitle(style="background-color: " + project.color)
+        span= project.title
+      .inner
+        ul.list.is-circle
+          each val in pages
+            if val.develop === true
+              li.item
+                a.text.is-link-reverse.is-primary(href=val.url)
+                  span= val.title
+        if project.github_url
+          .btns.is-right.is-xs
+            a.btn.is-outline(href=project.github_url) GitHub Code

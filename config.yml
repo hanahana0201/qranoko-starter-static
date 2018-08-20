@@ -1,0 +1,60 @@
+#-----------------------------------------------------
+# Config
+#-----------------------------------------------------
+
+project:
+  title: 開発プロジェクト 2018年0月制作分
+  github_url: https://github.com/qrac/qranoko-starter-static
+  color: "#1cb4c7"
+
+site:
+  title: Site Title
+  desc: Site Description
+  class: qranoko
+  url: https://qranoko.jp
+  color: "#1cb4c7"
+
+apple_mobile_web_app:
+  mode: true
+  status_bar_style: default
+  title: App Title
+
+pages:
+  index:
+    id: index
+    title: Index Title
+    desc: Index Description
+    class:
+      - project-index
+      - project-home
+    url: index.html
+    climb: /
+    ogimg: ogp.png
+    ogtype: website
+    twcard: summary_large_image
+    agent: rwd
+    login: false
+    develop: true
+
+nav:
+  index:
+    id: index
+    title: HOME
+    url: /
+    menu: true
+
+path:
+  img: img
+  font: font
+  css: css
+  js: js
+
+social:
+  twitter:
+    class: twitter
+    id: Qrac_JP
+    url: https://twitter.com
+  github:
+    class: github
+    id: qrac
+    url: https://github.com
