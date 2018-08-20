@@ -1,0 +1,1 @@
+# qranoko-starter-static
