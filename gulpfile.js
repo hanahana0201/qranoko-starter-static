@@ -7,6 +7,7 @@ const gulp = require("gulp")
 const notify = require("gulp-notify")
 const plumber = require("gulp-plumber")
 const rename = require("gulp-rename")
+const header = require("gulp-header")
 const browserSync = require("browser-sync")
 const pug = require("gulp-pug")
 const data = require("gulp-data")
@@ -20,10 +21,22 @@ const gcmq = require("gulp-group-css-media-queries")
 const cleanCSS = require("gulp-clean-css")
 const packageImporter = require("node-sass-package-importer")
 
+// Require File
+const pkg = require("./package.json")
+
+// Read File
+const files = {
+  pkg: "./package.json",
+  cfg: "./config.yml"
+}
+
+// Banner
+var banner = [
+  "/* <%= pkg.name %> v<%= pkg.version %> <%= pkg.license %> by <%= pkg.author %> */"
+].join("\n")
+
 // Paths
 const paths = {
-  package: "./",
-  config: "./",
   src_pug: "src/pug/",
   src_scss: "src/scss/",
   src_js: "src/js/",
@@ -79,14 +92,12 @@ gulp.task("pug", () => {
     )
     .pipe(
       data(function() {
-        return JSON.parse(fs.readFileSync(paths.package + "package.json"))
+        return JSON.parse(fs.readFileSync(files.pkg))
       })
     )
     .pipe(
       data(function() {
-        return yaml.safeLoad(
-          fs.readFileSync(paths.config + "config.yml", "utf-8")
-        )
+        return yaml.safeLoad(fs.readFileSync(files.cfg))
       })
     )
     .pipe(pug(pugOptions))
@@ -104,6 +115,7 @@ gulp.task("scss", () => {
     .pipe(sass(sassOptions))
     .pipe(postcss(postcssOption))
     .pipe(gcmq())
+    .pipe(header(banner, { pkg: pkg }))
     .pipe(gulp.dest(paths.out_css))
 })
 
