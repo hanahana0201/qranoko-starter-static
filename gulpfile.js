@@ -12,6 +12,7 @@ const pug = require("gulp-pug")
 const data = require("gulp-data")
 const yaml = require("js-yaml")
 const sass = require("gulp-sass")
+const sassGlob = require("gulp-sass-glob")
 const postcss = require("gulp-postcss")
 const autoprefixer = require("autoprefixer")
 const flexBugsFixes = require("postcss-flexbugs-fixes")
@@ -96,6 +97,7 @@ gulp.task("pug", () => {
 gulp.task("scss", () => {
   return gulp
     .src(paths.src_scss + "**/*.scss")
+    .pipe(sassGlob())
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )

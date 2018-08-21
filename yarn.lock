@@ -1689,6 +1689,16 @@ gulp-rename@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-1.4.0.tgz#de1c718e7c4095ae861f7296ef4f3248648240bd"
 
+gulp-sass-glob@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/gulp-sass-glob/-/gulp-sass-glob-1.0.9.tgz#749549a320d1545a9b3258880734828ab2911e28"
+  dependencies:
+    glob "^7.1.2"
+    minimatch "^3.0.4"
+    safe-buffer "^5.1.1"
+    slash "^2.0.0"
+    through2 "^2.0.3"
+
 gulp-sass@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-4.0.1.tgz#7f43d117eb2d303524968a1b48494af1bc64d1d9"
@@ -1901,6 +1911,10 @@ interpret@^1.1.0:
 invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
+
+iostone@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/iostone/-/iostone-3.0.0.tgz#0bc918fa25be0bc34bcafcfeef8159bc818af6a8"
 
 is-absolute@^1.0.0:
   version "1.0.0"
@@ -2533,9 +2547,17 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
+moftone@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/moftone/-/moftone-6.2.0.tgz#bf14a973459e562bd4d081e92cf6d7b778d7f2b0"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+
+musubii@^6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/musubii/-/musubii-6.4.0.tgz#d2dd26b3005e77d895f8acc43bc9439a0c0c3079"
 
 mute-stdout@^1.0.0:
   version "1.0.1"
@@ -3502,6 +3524,10 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
 
+sass-dashi@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/sass-dashi/-/sass-dashi-0.3.0.tgz#6071393a3064cc0bb2e9be7b17d5d8120eb81290"
+
 sass-graph@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/sass-graph/-/sass-graph-2.2.4.tgz#13fbd63cd1caf0908b9fd93476ad43a51d1e0b49"
@@ -3620,9 +3646,17 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
 
+shitajicss@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/shitajicss/-/shitajicss-4.6.0.tgz#529c001af1f0314a7e3b9731bda978cd466dd2e8"
+
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+slash@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
 
 snake-case@^2.1.0:
   version "2.1.0"
