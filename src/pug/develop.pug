@@ -52,6 +52,8 @@ html(lang="ja")
         span 納品リスト
       h2.subtitle(style="background-color: " + project.color)
         span= project.title
+        | &nbsp;-&nbsp;
+        span= "v" + version
       .inner
         ul.list.is-circle
           each val in pages

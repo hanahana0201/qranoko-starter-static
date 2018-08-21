@@ -21,6 +21,7 @@ const packageImporter = require("node-sass-package-importer")
 
 // Paths
 const paths = {
+  package: "./",
   config: "./",
   src_pug: "src/pug/",
   src_scss: "src/scss/",
@@ -77,6 +78,11 @@ gulp.task("pug", () => {
     )
     .pipe(
       data(function() {
+        return JSON.parse(fs.readFileSync(paths.package + "package.json"))
+      })
+    )
+    .pipe(
+      data(function() {
         return yaml.safeLoad(
           fs.readFileSync(paths.config + "config.yml", "utf-8")
         )
@@ -126,6 +132,7 @@ gulp.task("reload", function(done) {
 gulp.task("watch", () => {
   gulp.watch(
     [
+      paths.package + "package.json",
       paths.config + "config.yml",
       paths.src_pug + "**/*.pug",
       "!" + paths.src_pug + "**/_*.pug"
