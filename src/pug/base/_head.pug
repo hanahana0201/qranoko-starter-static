@@ -20,7 +20,7 @@ meta(http-equiv="x-ua-compatible" content="ie=edge")
 meta(property="og:title" content=page.title)
 meta(property="og:description" content=page.desc)
 meta(property="og:url" content=site.url+"/"+page.url)
-meta(property="og:image" content=site.url+"/"+path.img+"/"+page.ogimg)
+meta(property="og:image" content=site.url+"/"+path.img+"/"+page.ogimg+"?v"+dateNow)
 meta(property="og:site_name" content=site.title)
 meta(property="og:type" content=page.ogtype)
 
@@ -68,11 +68,11 @@ if apple_mobile_web_app.mode === true
 //- / Stylesheet
 //----------------------------------------------------
 
-link(rel="stylesheet" href=page.climb+path.css+"/style.min.css")
+link(rel="stylesheet" href=page.climb+path.css+"/project.min.css"+"?v"+dateNow)
 
 //----------------------------------------------------
 //- / Icon
 //----------------------------------------------------
 
-link(rel="apple-touch-icon" href=page.climb+path.img+"/apple-touch-icon.png")
-link(rel="icon" href=page.climb+path.img+"/favicon.png")
+link(rel="apple-touch-icon" href=page.climb+path.img+"/apple-touch-icon.png"+"?v"+dateNow)
+link(rel="icon" href=page.climb+path.img+"/favicon.png"+"?v"+dateNow)

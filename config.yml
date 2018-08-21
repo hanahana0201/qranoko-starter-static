@@ -10,8 +10,8 @@ project:
 site:
   title: Site Title
   desc: Site Description
-  class: qranoko
-  url: https://qranoko.jp
+  class: project
+  url: https://example.com
   color: "#1cb4c7"
 
 apple_mobile_web_app:
