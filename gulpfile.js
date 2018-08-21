@@ -131,12 +131,7 @@ gulp.task("reload", function(done) {
 // Watch
 gulp.task("watch", () => {
   gulp.watch(
-    [
-      paths.package + "package.json",
-      paths.config + "config.yml",
-      paths.src_pug + "**/*.pug",
-      "!" + paths.src_pug + "**/_*.pug"
-    ],
+    [paths.src_pug + "**/*.pug", "!" + paths.src_pug + "**/_*.pug"],
     gulp.series("pug", "reload")
   )
   gulp.watch(
