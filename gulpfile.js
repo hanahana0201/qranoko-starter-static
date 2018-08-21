@@ -1,5 +1,5 @@
 //----------------------------------------------------
-// Gulp > npx gulp
+// gulp: Setting
 //----------------------------------------------------
 
 const fs = require("fs")
@@ -19,9 +19,9 @@ const gcmq = require("gulp-group-css-media-queries")
 const cleanCSS = require("gulp-clean-css")
 const packageImporter = require("node-sass-package-importer")
 
-// Setting : Paths
+// Paths
 const paths = {
-  config: "",
+  config: "./",
   src_pug: "src/pug/",
   src_scss: "src/scss/",
   src_js: "src/js/",
@@ -33,13 +33,13 @@ const paths = {
   base_html: "dist/"
 }
 
-// Setting : Pug Options
+// Pug Options
 const pugOptions = {
   pretty: true,
   basedir: paths.src_pug
 }
 
-// Setting : Sass Options
+// Sass Options
 const sassOptions = {
   outputStyle: "expanded",
   importer: packageImporter({
@@ -47,15 +47,15 @@ const sassOptions = {
   })
 }
 
-// Setting : Autoprefixer Options
+// Autoprefixer Options
 const autoprefixerOption = {
   grid: true
 }
 
-// Setting : PostCSS Options
+// PostCSS Options
 const postcssOption = [flexBugsFixes, autoprefixer(autoprefixerOption)]
 
-// Setting : BrowserSync Options
+// BrowserSync Options
 const browserSyncOption = {
   server: {
     baseDir: paths.base_html
@@ -63,6 +63,10 @@ const browserSyncOption = {
   startPath: "./develop.html",
   notify: false
 }
+
+//----------------------------------------------------
+// gulp: Task
+//----------------------------------------------------
 
 // Pug > HTML
 gulp.task("pug", () => {
@@ -72,8 +76,10 @@ gulp.task("pug", () => {
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
     .pipe(
-      data(function(file) {
-        return yaml.safeLoad(fs.readFileSync("./config.yml", "utf-8"))
+      data(function() {
+        return yaml.safeLoad(
+          fs.readFileSync(paths.config + "config.yml", "utf-8")
+        )
       })
     )
     .pipe(pug(pugOptions))
