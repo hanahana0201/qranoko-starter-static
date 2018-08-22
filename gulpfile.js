@@ -20,6 +20,9 @@ const flexBugsFixes = require("postcss-flexbugs-fixes")
 const gcmq = require("gulp-group-css-media-queries")
 const cleanCSS = require("gulp-clean-css")
 const packageImporter = require("node-sass-package-importer")
+const babel = require("gulp-babel")
+const concat = require("gulp-concat")
+const uglify = require("gulp-uglify")
 
 // Require File
 const package = require("./package.json")
@@ -32,7 +35,9 @@ const files = {
 
 // Banner
 var banner = [
-  "/* <%= package.name %> v<%= package.version %> <%= package.license %> by <%= package.author %> */"
+  "/*! <%= package.name %> v<%= package.version %> <%= package.license %> by <%= package.author %> */",
+  "",
+  ""
 ].join("\n")
 
 // Paths
@@ -69,6 +74,11 @@ const autoprefixerOption = {
 
 // PostCSS Options
 const postcssOption = [flexBugsFixes, autoprefixer(autoprefixerOption)]
+
+// Uglify Options
+const uglifyOption = {
+  output: { comments: /^!/ }
+}
 
 // BrowserSync Options
 const browserSyncOption = {
@@ -132,6 +142,35 @@ gulp.task("cssmin", () => {
     .pipe(gulp.dest(paths.out_css))
 })
 
+// Babel
+gulp.task("babel", () => {
+  return gulp
+    .src(paths.src_js + "**/*.js")
+    .pipe(
+      plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
+    )
+    .pipe(concat("app.js"))
+    .pipe(
+      babel({
+        presets: ["env"]
+      })
+    )
+    .pipe(header(banner, { package: package }))
+    .pipe(gulp.dest(paths.out_js))
+})
+
+// Uglify
+gulp.task("uglify", () => {
+  return gulp
+    .src([paths.out_js + "**/*.js", "!" + paths.out_js + "**/*.min.js"])
+    .pipe(
+      plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
+    )
+    .pipe(uglify(uglifyOption))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(gulp.dest(paths.out_js))
+})
+
 // Browser Sync
 gulp.task("browser-sync", function(done) {
   browserSync.init(browserSyncOption)
@@ -153,6 +192,7 @@ gulp.task("watch", () => {
     paths.src_scss + "**/*.scss",
     gulp.series("scss", "cssmin", "reload")
   )
+  gulp.watch(paths.src_js + "**/*.js", gulp.series("babel", "uglify", "reload"))
 })
 
 gulp.task("default", gulp.parallel("browser-sync", "watch"))
