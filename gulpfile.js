@@ -20,12 +20,9 @@ const flexBugsFixes = require("postcss-flexbugs-fixes")
 const gcmq = require("gulp-group-css-media-queries")
 const cleanCSS = require("gulp-clean-css")
 const packageImporter = require("node-sass-package-importer")
-const webpack = require("webpack")
-const webpackStream = require("webpack-stream")
 
 // Require File
 const package = require("./package.json")
-const webpackConfig = require("./webpack.config.js")
 
 // Read File
 const files = {
@@ -135,14 +132,6 @@ gulp.task("cssmin", () => {
     .pipe(gulp.dest(paths.out_css))
 })
 
-// Webpack
-gulp.task("webpack", () => {
-  return gulp
-    .src(paths.src_js + "main.js")
-    .pipe(webpackStream(webpackConfig, webpack))
-    .pipe(gulp.dest(paths.out_js))
-})
-
 // Browser Sync
 gulp.task("browser-sync", function(done) {
   browserSync.init(browserSyncOption)
@@ -164,7 +153,6 @@ gulp.task("watch", () => {
     paths.src_scss + "**/*.scss",
     gulp.series("scss", "cssmin", "reload")
   )
-  gulp.watch(paths.src_js + "**/*.js", gulp.series("webpack", "reload"))
 })
 
 gulp.task("default", gulp.parallel("browser-sync", "watch"))
