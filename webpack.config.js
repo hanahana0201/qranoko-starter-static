@@ -1,15 +1,14 @@
 const path = require("path")
 const webpack = require("webpack")
 const package = require("./package.json")
-const MODE = "development"
-const enabledSourceMap = MODE === "development"
+const MODE = "development" // development or production
 
 module.exports = {
   mode: MODE,
   entry: "./src/js/main.js",
   output: {
     filename: "bundle.js",
-    path: path.join(__dirname, "dist/js")
+    path: path.join(__dirname, "dist/assets/js")
   },
   module: {
     rules: [
@@ -43,6 +42,7 @@ module.exports = {
             options: {
               sourceMap: true,
               plugins: [
+                require("postcss-flexbugs-fixes"),
                 require("autoprefixer")({
                   grid: true
                 })
