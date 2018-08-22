@@ -1,7 +1,7 @@
 const path = require("path")
 const webpack = require("webpack")
 const package = require("./package.json")
-const MODE = "development" // development or production
+const MODE = "production" // development or production
 
 module.exports = {
   mode: MODE,
