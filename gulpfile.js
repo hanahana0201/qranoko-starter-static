@@ -20,19 +20,22 @@ const flexBugsFixes = require("postcss-flexbugs-fixes")
 const gcmq = require("gulp-group-css-media-queries")
 const cleanCSS = require("gulp-clean-css")
 const packageImporter = require("node-sass-package-importer")
+const webpack = require("webpack")
+const webpackStream = require("webpack-stream")
 
 // Require File
-const pkg = require("./package.json")
+const package = require("./package.json")
+const webpackConfig = require("./webpack.config.js")
 
 // Read File
 const files = {
-  pkg: "./package.json",
-  cfg: "./config.yml"
+  package: "./package.json",
+  config: "./config.yml"
 }
 
 // Banner
 var banner = [
-  "/* <%= pkg.name %> v<%= pkg.version %> <%= pkg.license %> by <%= pkg.author %> */"
+  "/* <%= package.name %> v<%= package.version %> <%= package.license %> by <%= package.author %> */"
 ].join("\n")
 
 // Paths
@@ -92,12 +95,12 @@ gulp.task("pug", () => {
     )
     .pipe(
       data(function() {
-        return JSON.parse(fs.readFileSync(files.pkg))
+        return JSON.parse(fs.readFileSync(files.package))
       })
     )
     .pipe(
       data(function() {
-        return yaml.safeLoad(fs.readFileSync(files.cfg))
+        return yaml.safeLoad(fs.readFileSync(files.config))
       })
     )
     .pipe(pug(pugOptions))
@@ -115,7 +118,7 @@ gulp.task("scss", () => {
     .pipe(sass(sassOptions))
     .pipe(postcss(postcssOption))
     .pipe(gcmq())
-    .pipe(header(banner, { pkg: pkg }))
+    .pipe(header(banner, { package: package }))
     .pipe(gulp.dest(paths.out_css))
 })
 
@@ -129,6 +132,14 @@ gulp.task("cssmin", () => {
     .pipe(cleanCSS())
     .pipe(rename({ suffix: ".min" }))
     .pipe(gulp.dest(paths.out_css))
+})
+
+// Webpack
+gulp.task("webpack", () => {
+  return gulp
+    .src(paths.src_js + "main.js")
+    .pipe(webpackStream(webpackConfig, webpack))
+    .pipe(gulp.dest(paths.out_js))
 })
 
 // Browser Sync
@@ -152,6 +163,7 @@ gulp.task("watch", () => {
     paths.src_scss + "**/*.scss",
     gulp.series("scss", "cssmin", "reload")
   )
+  gulp.watch(paths.src_js + "**/*.js", gulp.series("webpack", "reload"))
 })
 
 gulp.task("default", gulp.parallel("browser-sync", "watch"))

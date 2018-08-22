@@ -1,6 +1,6 @@
 const path = require("path")
 const webpack = require("webpack")
-const pjson = require("./package.json")
+const package = require("./package.json")
 const MODE = "development"
 const enabledSourceMap = MODE === "development"
 
@@ -61,8 +61,8 @@ module.exports = {
   },
   plugins: [
     new webpack.BannerPlugin({
-      banner: `${pjson.name} v${pjson.version} ${pjson.license} by ${
-        pjson.author
+      banner: `${package.name} v${package.version} ${package.license} by ${
+        package.author
       }`
     })
   ]
