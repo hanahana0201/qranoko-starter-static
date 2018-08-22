@@ -196,3 +196,16 @@ gulp.task("watch", () => {
 })
 
 gulp.task("default", gulp.parallel("browser-sync", "watch"))
+
+//----------------------------------------------------
+// gulp: Build
+//----------------------------------------------------
+
+gulp.task(
+  "build",
+  gulp.parallel(
+    gulp.series("pug"),
+    gulp.series("scss", "cssmin"),
+    gulp.series("babel", "uglify")
+  )
+)

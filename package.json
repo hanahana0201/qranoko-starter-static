@@ -6,7 +6,8 @@
   "author": "Qrac",
   "license": "MIT",
   "scripts": {
-    "dev": "gulp"
+    "dev": "gulp",
+    "build": "gulp build"
   },
   "browserslist": [
     "> 3% in JP",
