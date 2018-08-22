@@ -44,10 +44,10 @@ nav:
     menu: true
 
 path:
-  img: img
-  font: font
-  css: css
-  js: js
+  img: assets/img
+  font: assets/font
+  css: assets/css
+  js: assets/js
 
 social:
   twitter:

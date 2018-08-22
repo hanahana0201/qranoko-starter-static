@@ -45,9 +45,9 @@ const paths = {
   src_js: "src/js/",
   src_img: "src/img/",
   out_html: "dist/",
-  out_css: "dist/css/",
-  out_js: "dist/js/",
-  out_img: "dist/img/",
+  out_css: "dist/assets/css/",
+  out_js: "dist/assets/js/",
+  out_img: "dist/assets/img/",
   base_html: "dist/"
 }
 
@@ -79,6 +79,7 @@ const browserSyncOption = {
     baseDir: paths.base_html
   },
   startPath: "./develop.html",
+  open: false,
   notify: false
 }
 
