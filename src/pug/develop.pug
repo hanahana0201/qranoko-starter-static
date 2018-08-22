@@ -21,7 +21,6 @@ html(lang="ja")
         align-items: center;
         min-height: 100vh;
         padding: 1em 1em 4em;
-        background-color: #eceeef;
         font-family: YakuHanJPs, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans Japanese", Meiryo, "Yu Gothic Medium", sans-serif;
       }
       .card {
@@ -33,12 +32,10 @@ html(lang="ja")
       }
       .card > .title {
         padding: 1em 1em 0.125em;
-        color: #fff;
         font-weight: 700;
       }
       .card > .subtitle {
         padding: 0.125em 1em 1em;
-        color: #fff;
       }
       .card > .inner {
         padding: 1em;
@@ -46,11 +43,11 @@ html(lang="ja")
       .list {
         line-height: 2;
       }
-  body
+  body(style="background-color:" + project.bg_color +";")
     .card
-      h1.title(style="background-color: " + project.color)
+      h1.title(style="background-color:" + project.heading_bg_color + ";" + "color:" + project.heading_text_color + ";")
         span 納品リスト
-      h2.subtitle(style="background-color: " + project.color)
+      h2.subtitle(style="background-color:" + project.heading_bg_color + ";" + "color:" + project.heading_text_color + ";")
         span= project.title
         if version
           | &nbsp;-&nbsp;
@@ -60,7 +57,7 @@ html(lang="ja")
           each val in pages
             if val.develop === true
               li.item
-                a.text.is-link-reverse.is-primary(href=val.url)
+                a.text.is-link-reverse.is-primary(href=val.url style="color:" + project.link_text_color + ";")
                   span= val.title
         if project.github_url
           .btns.is-right.is-xs

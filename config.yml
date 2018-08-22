@@ -5,7 +5,10 @@
 project:
   title: 開発プロジェクト 2018年0月制作分
   github_url: https://github.com/qrac/qranoko-starter-static
-  color: "#1cb4c7"
+  heading_bg_color: "#1cb4c7" #default = #1cb4c7
+  heading_text_color: "#fff" #default = #fff
+  link_text_color: "#1cb4c7" #default = #1cb4c7
+  bg_color: "#eceeef" #default = #eceeef
 
 site:
   title: Site Title
