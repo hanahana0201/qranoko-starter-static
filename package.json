@@ -2,7 +2,7 @@
   "name": "qranoko-starter-static",
   "description": "Starter template for developing static websites made by QRANOKO",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Qrac",
   "license": "MIT",
   "scripts": {

@@ -1,7 +1,7 @@
 //----------------------------------------------------
 //- Page: Index
 //----------------------------------------------------
-extends base/_layout.pug
+extends /base/_layout.pug
 
 block vars
   - var key = "index"
@@ -9,7 +9,7 @@ block vars
 
 block contents
 
-  include parts/_header.pug
+  include /parts/_header.pug
 
   main.section.is-main#main
 
@@ -17,4 +17,4 @@ block contents
       .inner
         h2= page.title + " Main"
 
-  include parts/_footer.pug
+  include /parts/_footer.pug
