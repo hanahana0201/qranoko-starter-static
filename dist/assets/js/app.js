@@ -1,4 +1,4 @@
-/*! qranoko-starter-static v0.0.2 MIT by Qrac */
+/*! qranoko-starter-static v0.0.3 MIT by Qrac */
 
 "use strict";
 
