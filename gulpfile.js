@@ -34,7 +34,7 @@ const files = {
 }
 
 // Banner
-var banner = [
+const banner = [
   "/*! <%= package.name %> v<%= package.version %> <%= package.license %> by <%= package.author %> */",
   "",
   ""
