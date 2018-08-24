@@ -45,11 +45,9 @@ const paths = {
   src_pug: "src/pug/",
   src_scss: "src/scss/",
   src_js: "src/js/",
-  src_img: "src/img/",
   out_html: "dist/",
   out_css: "dist/assets/css/",
   out_js: "dist/assets/js/",
-  out_img: "dist/assets/img/",
   base_html: "dist/"
 }
 
