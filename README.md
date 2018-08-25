@@ -8,11 +8,13 @@ Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qra
 
 ## Feature
 
-### Organize package.json #1
+### Organize package.json
 
 [npm の仕様](https://docs.npmjs.com/files/package.json)に基づいた記述に、プロジェクトの情報・Organization 情報を加えて `package.json` を作成。設定済みの項目を上書きすることで必要な情報を埋められます。
 
 npm ライブラリを作成する際は、`private` を `false` または項目自体を削除して `npm publish` してください。デフォルトで `true` を入れているのはミスを防止するためです。
+
+> - [package.json の書き方を整える · Issue #1 · qrac/qranoko-starter-static](https://github.com/qrac/qranoko-starter-static/issues/1)
 
 ## License
 
