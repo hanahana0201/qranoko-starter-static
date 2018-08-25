@@ -21,6 +21,7 @@ html(lang="ja")
         align-items: center;
         min-height: 100vh;
         padding: 1em 1em 4em;
+        background-color: #eceeef;
         font-family: YakuHanJPs, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans Japanese", Meiryo, "Yu Gothic Medium", sans-serif;
       }
       .card {
@@ -32,10 +33,14 @@ html(lang="ja")
       }
       .card > .title {
         padding: 1em 1em 0.125em;
+        background-color: #1cb4c7;
+        color: #fff;
         font-weight: 700;
       }
       .card > .subtitle {
         padding: 0.125em 1em 1em;
+        background-color: #1cb4c7;
+        color: #fff;
       }
       .card > .inner {
         padding: 1em;
@@ -43,12 +48,12 @@ html(lang="ja")
       .list {
         line-height: 2;
       }
-  body(style="background-color:" + project.bg_color +";")
+  body
     .card
-      h1.title(style="background-color:" + project.heading_bg_color + ";" + "color:" + project.heading_text_color + ";")
+      h1.title
         span 納品リスト
-      h2.subtitle(style="background-color:" + project.heading_bg_color + ";" + "color:" + project.heading_text_color + ";")
-        span= project.title
+      h2.subtitle
+        span= project.name
         if version
           | &nbsp;-&nbsp;
           span= "v" + version
@@ -59,6 +64,6 @@ html(lang="ja")
               li.item
                 a.text.is-link-reverse.is-primary(href=val.url style="color:" + project.link_text_color + ";")
                   span= val.title
-        if project.github_url
+        if repository
           .btns.is-right.is-xs
-            a.btn.is-outline(href=project.github_url) GitHub Code
+            a.btn.is-outline(href=repository) GitHub Code

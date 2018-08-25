@@ -8,6 +8,7 @@ const notify = require("gulp-notify")
 const plumber = require("gulp-plumber")
 const rename = require("gulp-rename")
 const header = require("gulp-header")
+const gulpif = require("gulp-if")
 const browserSync = require("browser-sync")
 const pug = require("gulp-pug")
 const data = require("gulp-data")
@@ -34,27 +35,35 @@ const files = {
 }
 
 // Banner
-const banner = [
-  "/*! <%= package.name %> v<%= package.version %> <%= package.license %> by <%= package.author %> */",
-  "",
-  ""
-].join("\n")
+const banner = {
+  basic: [
+    "/*! <%= package.project.name %> v<%= package.version %> <%= package.license %> by <%= package.author.name %> */",
+    "",
+    ""
+  ].join("\n"),
+  visible: package.project.banner
+}
 
 // Paths
 const paths = {
-  src_pug: "src/pug/",
-  src_scss: "src/scss/",
-  src_js: "src/js/",
-  out_html: "dist/",
-  out_css: "dist/assets/css/",
-  out_js: "dist/assets/js/",
-  base_html: "dist/"
+  src: {
+    dir: package.project.src + "/",
+    pug: package.project.src + "/pug/",
+    scss: package.project.src + "/scss/",
+    js: package.project.src + "/js/"
+  },
+  dist: {
+    dir: package.project.dist + "/",
+    html: package.project.dist + "/",
+    css: package.project.dist + "/assets/css/",
+    js: package.project.dist + "/assets/js/"
+  }
 }
 
 // Pug Options
 const pugOptions = {
   pretty: true,
-  basedir: paths.src_pug
+  basedir: paths.src.pug
 }
 
 // Sass Options
@@ -81,7 +90,7 @@ const uglifyOption = {
 // BrowserSync Options
 const browserSyncOption = {
   server: {
-    baseDir: paths.base_html
+    baseDir: paths.dist.html
   },
   startPath: "./develop.html",
   open: false,
@@ -95,7 +104,7 @@ const browserSyncOption = {
 // Pug > HTML
 gulp.task("pug", () => {
   return gulp
-    .src([paths.src_pug + "**/*.pug", "!" + paths.src_pug + "**/_*.pug"])
+    .src([paths.src.pug + "**/*.pug", "!" + paths.src.pug + "**/_*.pug"])
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
@@ -110,13 +119,13 @@ gulp.task("pug", () => {
       })
     )
     .pipe(pug(pugOptions))
-    .pipe(gulp.dest(paths.out_html))
+    .pipe(gulp.dest(paths.dist.html))
 })
 
 // SCSS > CSS
 gulp.task("scss", () => {
   return gulp
-    .src(paths.src_scss + "**/*.scss")
+    .src(paths.src.scss + "**/*.scss")
     .pipe(sassGlob())
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
@@ -124,26 +133,26 @@ gulp.task("scss", () => {
     .pipe(sass(sassOptions))
     .pipe(postcss(postcssOption))
     .pipe(gcmq())
-    .pipe(header(banner, { package: package }))
-    .pipe(gulp.dest(paths.out_css))
+    .pipe(gulpif(banner.visible, header(banner.basic, { package: package })))
+    .pipe(gulp.dest(paths.dist.css))
 })
 
 // CSS Minify
 gulp.task("cssmin", () => {
   return gulp
-    .src([paths.out_css + "**/*.css", "!" + paths.out_css + "**/*.min.css"])
+    .src([paths.dist.css + "**/*.css", "!" + paths.dist.css + "**/*.min.css"])
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
     .pipe(cleanCSS())
     .pipe(rename({ suffix: ".min" }))
-    .pipe(gulp.dest(paths.out_css))
+    .pipe(gulp.dest(paths.dist.css))
 })
 
 // Babel
 gulp.task("babel", () => {
   return gulp
-    .src(paths.src_js + "**/*.js")
+    .src(paths.src.js + "**/*.js")
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
@@ -153,20 +162,20 @@ gulp.task("babel", () => {
         presets: ["env"]
       })
     )
-    .pipe(header(banner, { package: package }))
-    .pipe(gulp.dest(paths.out_js))
+    .pipe(gulpif(banner.visible, header(banner.basic, { package: package })))
+    .pipe(gulp.dest(paths.dist.js))
 })
 
 // Uglify
 gulp.task("uglify", () => {
   return gulp
-    .src([paths.out_js + "**/*.js", "!" + paths.out_js + "**/*.min.js"])
+    .src([paths.dist.js + "**/*.js", "!" + paths.dist.js + "**/*.min.js"])
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
     .pipe(uglify(uglifyOption))
     .pipe(rename({ suffix: ".min" }))
-    .pipe(gulp.dest(paths.out_js))
+    .pipe(gulp.dest(paths.dist.js))
 })
 
 // Browser Sync
@@ -183,14 +192,14 @@ gulp.task("reload", function(done) {
 // Watch
 gulp.task("watch", () => {
   gulp.watch(
-    [paths.src_pug + "**/*.pug", "!" + paths.src_pug + "**/_*.pug"],
+    [paths.src.pug + "**/*.pug", "!" + paths.src.pug + "**/_*.pug"],
     gulp.series("pug", "reload")
   )
   gulp.watch(
-    paths.src_scss + "**/*.scss",
+    paths.src.scss + "**/*.scss",
     gulp.series("scss", "cssmin", "reload")
   )
-  gulp.watch(paths.src_js + "**/*.js", gulp.series("babel", "uglify", "reload"))
+  gulp.watch(paths.src.js + "**/*.js", gulp.series("babel", "uglify", "reload"))
 })
 
 gulp.task("default", gulp.parallel("browser-sync", "watch"))
