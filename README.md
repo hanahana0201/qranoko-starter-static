@@ -8,14 +8,14 @@ Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qra
 
 ## Feature
 
-- gulp v4
-- Pug
-- Sass(SCSS)
-- PostCSS
-- Autoprefixer
-- Babel
-- UglifyJS
-- Browsersync
+- [gulp v4](https://gulpjs.com/)
+- [Pug](https://pugjs.org/)
+- [Sass(SCSS)](https://sass-lang.com/)
+- [PostCSS](https://postcss.org/)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
+- [Babel](https://babeljs.io/)
+- [UglifyJS 3](https://github.com/mishoo/UglifyJS2)
+- [Browsersync](https://browsersync.io/)
 
 ## Detail
 
