@@ -16,9 +16,25 @@ npm ライブラリを作成する際は、`private` を `false` または項目
 
 - [package.json の書き方を整える · Issue #1 · qrac/qranoko-starter-static](https://github.com/qrac/qranoko-starter-static/issues/1)
 
+## Support
+
+| Chrome | Firefox | IE  |  Ege   | Safari(Mac) |
+| :----: | :-----: | :-: | :----: | :---------: |
+| Newest | Newest  | 11~ | Newest |   Newest    |
+
+| Safari(iOS) | Chrome(Android) | Browser(Android) |
+| :---------: | :-------------: | :--------------: |
+|   Newest    |     Newest      |       4.4~       |
+
+## Develop
+
+- MacBook Pro: 13-inch 2016 No-touchbar
+- OS: macOS High Sierra 10.13.6
+- Node.js: v10.9.0
+
 ## License
 
-MIT
+- MIT
 
 ## Credit
 
