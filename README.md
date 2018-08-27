@@ -19,7 +19,7 @@ Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qra
 
 ## Detail
 
-### Organize package.json
+### package.json
 
 [npm の仕様](https://docs.npmjs.com/files/package.json)に基づいた記述に、プロジェクト情報・Organization 情報を加えて `package.json` を作成。設定済み項目を上書きすることで必要な情報を集約、同時にプロジェクト内で変数として使えるようにします。
 
