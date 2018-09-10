@@ -13,8 +13,36 @@
 //----------------------------------------------------
 
 // Project Variable
+$project-color-red: #f44336;
+$project-color-blue: #2196f3;
+$project-color-green: #4caf50;
+$project-color-yellow: #ffeb3b;
+$project-color-orange: #ff9800;
+$project-color-grey: #9e9e9e;
+$project-header-height: 56px;
+$project-header-height-mobile: 56px;
+$project-header-height-desktop: 64px;
+$project-header-height-wide: 72px;
+//$project-border-radius: 8px;
 
 // MUSUBii Override Variable
+$font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", Meiryo,
+  "Yu Gothic Medium", sans-serif;
+//$font-sans: YakuHanJPs, "Noto Sans JP", Meiryo, sans-serif;
+//$font-serif: YakuHanMPs, "Noto Serif JP", serif;
+//$font-sans: YakuHanRPs, "M PLUS Rounded 1c", Meiryo, sans-serif;
+//$btn-border-radius: $project-border-radius;
+//$input-border-radius: $project-border-radius;
+
+// Brand Variable
+$brand-color-twitter: #1da1f2;
+$brand-color-facebook: #3b5998;
+$brand-color-google-plus: #dd4b39;
+$brand-color-line: #00c300;
+$brand-color-hatena-bookmark: #00a4de;
+$brand-color-pocket: #ef4056;
+$brand-color-feedly: #2bb24c;
+$brand-color-rss: #f26522;
 
 //----------------------------------------------------
 // / Import
