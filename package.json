@@ -59,6 +59,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
     "gulp-sass-glob": "^1.0.9",
+    "gulp-svg-sprite": "^1.4.0",
     "gulp-uglify": "^3.0.1",
     "iostone": "^3.0.0",
     "js-yaml": "^3.12.0",

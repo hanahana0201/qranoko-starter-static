@@ -24,6 +24,7 @@ const packageImporter = require("node-sass-package-importer")
 const babel = require("gulp-babel")
 const concat = require("gulp-concat")
 const uglify = require("gulp-uglify")
+const svgSprite = require("gulp-svg-sprite")
 
 // Require File
 const package = require("./package.json")
@@ -50,13 +51,15 @@ const paths = {
     dir: package.project.src + "/",
     pug: package.project.src + "/pug/",
     scss: package.project.src + "/scss/",
-    js: package.project.src + "/js/"
+    js: package.project.src + "/js/",
+    icon: package.project.src + "/icon/"
   },
   dist: {
     dir: package.project.dist + "/",
     html: package.project.dist + "/",
     css: package.project.dist + "/assets/css/",
-    js: package.project.dist + "/assets/js/"
+    js: package.project.dist + "/assets/js/",
+    img: package.project.dist + "/assets/img/"
   }
 }
 
@@ -178,6 +181,43 @@ gulp.task("uglify", () => {
     .pipe(gulp.dest(paths.dist.js))
 })
 
+// SVG Sprite Icon
+gulp.task("sprite", function() {
+  return gulp
+    .src(paths.src.icon + "**/*.svg")
+    .pipe(
+      plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
+    )
+    .pipe(
+      svgSprite({
+        mode: {
+          symbol: {
+            dest: "./",
+            sprite: "sprite.svg"
+          }
+        },
+        shape: {
+          transform: [
+            {
+              svgo: {
+                plugins: [
+                  { removeTitle: true },
+                  { removeStyleElement: true },
+                  { removeAttrs: { attrs: "fill" } }
+                ]
+              }
+            }
+          ]
+        },
+        svg: {
+          xmlDeclaration: true,
+          doctypeDeclaration: true
+        }
+      })
+    )
+    .pipe(gulp.dest(paths.dist.img))
+})
+
 // Browser Sync
 gulp.task("browser-sync", function(done) {
   browserSync.init(browserSyncOption)
@@ -200,6 +240,7 @@ gulp.task("watch", () => {
     gulp.series("scss", "cssmin", "reload")
   )
   gulp.watch(paths.src.js + "**/*.js", gulp.series("babel", "uglify", "reload"))
+  gulp.watch(paths.src.icon + "**/*.svg", gulp.series("sprite"))
 })
 
 gulp.task("default", gulp.parallel("browser-sync", "watch"))
@@ -213,6 +254,7 @@ gulp.task(
   gulp.parallel(
     gulp.series("pug"),
     gulp.series("scss", "cssmin"),
-    gulp.series("babel", "uglify")
+    gulp.series("babel", "uglify"),
+    gulp.series("sprite")
   )
 )
