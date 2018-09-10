@@ -1,0 +1,36 @@
+//----------------------------------------------------
+// / Go to top
+//----------------------------------------------------
+
+.gototop {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  white-space: nowrap;
+  width: calc(2.5em + 1px * 2);
+  height: calc(2.5em + 1px * 2);
+  background-color: $project-color-grey;
+  border-radius: 999em;
+  line-height: 1;
+  text-align: center;
+  transition: ease-out 0.4s;
+  z-index: 90;
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+  &:not(.is-active) {
+    opacity: 0;
+    visibility: hidden;
+  }
+  > .icon {
+    width: 1.5em;
+    height: 1.5em;
+    fill: $light;
+  }
+}

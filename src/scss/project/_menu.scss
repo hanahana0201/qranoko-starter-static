@@ -1,0 +1,86 @@
+//----------------------------------------------------
+// / Menu
+//----------------------------------------------------
+
+.menu.is-global {
+  @include desktop {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0.75em;
+    align-items: center;
+  }
+  .menu-list {
+    @include mobile-tablet {
+      position: absolute;
+      top: $project-header-height;
+      right: 0;
+      width: 100vw;
+      background-color: $light;
+      box-shadow: 0 2px 2px 0 rgba(103, 128, 108, 0.25);
+      z-index: 110;
+      &:not(.is-active) {
+        display: none;
+      }
+    }
+    @include desktop {
+      display: flex;
+    }
+  }
+  .menu-item {
+    &:not(:first-child) {
+      @include desktop {
+      }
+    }
+  }
+  .menu-item > a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: $project-header-height;
+    padding: 0 0.75em;
+    transition: 0.12s ease-out;
+    &:hover,
+    &:active {
+      background-color: $grey-100;
+      //color: $light;
+    }
+  }
+  .menu-text-main {
+  }
+  .menu-text-sub {
+    @include mobile-tablet {
+    }
+  }
+  .btn.is-twitter {
+    background-color: $brand-color-twitter;
+    outline: 0;
+    > .icon {
+      width: 1.5em;
+      height: 1.5em;
+      fill: $light;
+    }
+  }
+  .btn.is-menu {
+    background-color: $primary;
+    outline: 0;
+    > .icon {
+      width: 1.5em;
+      height: 1.5em;
+      fill: $light;
+    }
+    &:not(.is-active) {
+      > .icon.is-close {
+        display: none;
+      }
+    }
+    &.is-active {
+      > .icon.is-menu {
+        display: none;
+      }
+    }
+    @include desktop {
+      display: none;
+    }
+  }
+}

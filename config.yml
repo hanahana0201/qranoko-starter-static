@@ -31,12 +31,12 @@ pages:
     login: false
     develop: true
 
-nav:
+menu:
   index:
     id: index
     title: HOME
     url: /
-    menu: true
+    visible: true
 
 path:
   img: assets/img

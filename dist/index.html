@@ -10,7 +10,7 @@
     <meta property="og:title" content="Index Title">
     <meta property="og:description" content="Index Description">
     <meta property="og:url" content="https://example.com/index.html">
-    <meta property="og:image" content="https://example.com/assets/img/ogp.png?ver=1536579495825">
+    <meta property="og:image" content="https://example.com/assets/img/ogp.png?ver=1536586601865">
     <meta property="og:site_name" content="Site Title">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -19,17 +19,32 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style">
     <meta name="apple-mobile-web-app-title" content="App Title">
-    <link rel="stylesheet" href="/assets/css/project.min.css?ver=1536579495825">
-    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?ver=1536579495825">
-    <link rel="icon" href="/assets/img/favicon.png?ver=1536579495825">
+    <link rel="stylesheet" href="/assets/css/project.min.css?ver=1536586601865">
+    <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png?ver=1536586601865">
+    <link rel="icon" href="/assets/img/favicon.png?ver=1536586601865">
   </head>
   <body class="project project-index project-home" ontouchstart>
     <header class="section is-header" id="header">
-      <section class="section is-header-nav" id="header-nav">
-        <div class="inner">
-          <h1>Index Title Header</h1>
-        </div>
-      </section>
+      <div class="inner">
+        <h1 class="logo"><a class="logo-link" href="/"><img class="logo-img" src="/assets/img/logo.svg?ver=1536586601865" alt="Site Title ロゴ"></a></h1>
+        <nav class="menu is-global">
+          <ul class="menu-list js-menu-content">
+            <li class="menu-item"><a href="/">HOME</a></li>
+          </ul>
+          <div class="btns">
+            <button class="btn is-plain is-menu is-circle js-menu-toggle" type="button">
+              <svg class="icon is-menu" role="img">
+                <title>menu</title>
+                <use xlink:href="/assets/img/sprite.svg#menu"></use>
+              </svg>
+              <svg class="icon is-close" role="img">
+                <title>close</title>
+                <use xlink:href="/assets/img/sprite.svg#close"></use>
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
     </header>
     <main class="section is-main" id="main">
       <section class="section is-content">
@@ -39,13 +54,13 @@
       </section>
     </main>
     <footer class="section is-footer" id="footer">
-      <section class="section is-footer-nav" id="footer-nav">
+      <section class="section is-footer-copyright">
         <div class="inner">
-          <p>Index Title Footer</p>
+          <p class="texts is-copyright is-center is-light">© 2018Site Title</p>
         </div>
       </section>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/assets/js/app.min.js?ver=1536579495825"></script>
+    <script src="/assets/js/app.min.js?ver=1536586601865"></script>
   </body>
 </html>

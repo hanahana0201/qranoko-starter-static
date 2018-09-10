@@ -1,0 +1,48 @@
+//----------------------------------------------------
+// / Pagination
+//----------------------------------------------------
+
+.pagination {
+}
+
+.pagination-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pagination-item {
+  > a,
+  > span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    white-space: nowrap;
+    padding: 0.5em 1em;
+    margin-bottom: 0.5em;
+    background-color: $light;
+    border: 1px solid $dark-8;
+    border-radius: $btn-border-radius;
+    color: $cyan-500;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+  }
+  &:not(:first-child) > a,
+  &:not(:first-child) > span {
+    margin-left: 0.5em;
+  }
+  > a {
+    transition: ease-out 0.12s;
+    &:hover {
+      background-color: $cyan-500;
+      color: $light;
+    }
+  }
+  &.is-current > span {
+    background-color: $blue-grey-800;
+    border-color: $blue-grey-800;
+    color: $light;
+  }
+}

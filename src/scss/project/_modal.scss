@@ -1,0 +1,111 @@
+//----------------------------------------------------
+// / Modal
+//----------------------------------------------------
+
+.modal {
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  &.is-white-out {
+    background: rgba(222, 222, 222, 0.85);
+  }
+}
+
+.modal-container {
+}
+
+.modal-close {
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  > .icon {
+    width: 2em;
+    height: 2em;
+    fill: $light;
+  }
+}
+
+//----------------------------------------------------
+// / Animation
+//----------------------------------------------------
+
+@keyframes mm-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mm-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mm-slide-in {
+  from {
+    transform: translateY(15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes mm-slide-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10%);
+  }
+}
+
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal[aria-hidden="false"] .modal-overlay {
+  animation: mm-fade-in 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.modal[aria-hidden="false"] .modal-container {
+  animation: mm-slide-in 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.modal[aria-hidden="true"] .modal-overlay {
+  animation: mm-fade-out 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.modal[aria-hidden="true"] .modal-container {
+  animation: mm-slide-out 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.modal .modal-container,
+.modal .modal-overlay {
+  will-change: transform;
+}

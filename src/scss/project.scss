@@ -23,7 +23,7 @@ $project-header-height: 56px;
 $project-header-height-mobile: 56px;
 $project-header-height-desktop: 64px;
 $project-header-height-wide: 72px;
-//$project-border-radius: 8px;
+$project-border-radius: 3px;
 
 // MUSUBii Override Variable
 //$font-sans: YakuHanJPs, "Noto Sans JP", Meiryo, sans-serif;
@@ -74,4 +74,4 @@ $brand-color-rss: #f26522;
 // / Project
 //----------------------------------------------------
 
-//@import "project/**";
+@import "project/**";

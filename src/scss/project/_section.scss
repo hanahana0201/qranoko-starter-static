@@ -1,0 +1,99 @@
+//----------------------------------------------------
+// / Section
+//----------------------------------------------------
+
+.section.is-header {
+  position: sticky;
+  top: 0;
+  background-color: $light;
+  box-shadow: 0 2px 2px 0 rgba(103, 128, 108, 0.25);
+  z-index: 100;
+  > .inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    height: $project-header-height;
+  }
+}
+
+.section.is-hero {
+  min-height: 65vw;
+  padding: 1em 0;
+  background-position: center center;
+  background-size: cover;
+}
+
+.section.is-front-basic {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2.5em 0;
+  &.is-anchor-fix {
+    margin-top: -$project-header-height;
+    padding: calc(7.5vh + #{$project-header-height}) 0 7.5vh;
+    @include desktop {
+      padding: calc(5em + #{$project-header-height}) 0 5em;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: $project-header-height;
+      left: 0;
+      width: 100%;
+      height: calc(100% - #{$project-header-height});
+      z-index: 1;
+    }
+    > .inner {
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+.section.is-main.is-basic {
+  padding: 0 0 3em;
+  @include wide {
+    > .inner {
+      width: 960px;
+    }
+  }
+}
+
+.section.is-title {
+  padding: 3em 0;
+}
+
+.section.is-entry {
+  padding: 1em;
+  @include tablet {
+    padding: 3em 4em;
+  }
+}
+
+.section.is-footer {
+}
+
+.section.is-footer-widget {
+  padding: 2.5em 0;
+  background-color: $blue-grey-700;
+  .widgets {
+    display: grid;
+    grid-gap: 1em;
+    @include tablet {
+      grid-template-columns: auto auto;
+      justify-content: center;
+    }
+    .widget {
+      color: $light;
+      @include desktop {
+        min-width: 380px;
+      }
+    }
+  }
+}
+
+.section.is-footer-copyright {
+  padding: 1.5em 0;
+  background-color: $blue-grey-800;
+}

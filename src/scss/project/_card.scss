@@ -1,0 +1,30 @@
+//----------------------------------------------------
+// / Card
+//----------------------------------------------------
+
+.cards {
+  display: grid;
+  grid-gap: 0.75em;
+}
+
+.card {
+  background-color: $light;
+  border-radius: $project-border-radius;
+  overflow: hidden;
+  &.is-link {
+    //transition: 0.24s ease-out;
+    &:hover,
+    &:active {
+    }
+    .card-date {
+    }
+    .card-tite {
+    }
+  }
+  .card-header {
+  }
+  .card-main {
+  }
+  .card-footer {
+  }
+}

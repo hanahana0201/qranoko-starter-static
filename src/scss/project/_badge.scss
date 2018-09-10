@@ -1,0 +1,15 @@
+//----------------------------------------------------
+// / Badge
+//----------------------------------------------------
+
+.badge {
+  display: inline-block;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  font-size: 75%;
+  font-weight: 700;
+  &.is-new {
+    background-color: $red-300;
+    color: $light;
+  }
+}

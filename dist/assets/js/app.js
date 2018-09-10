@@ -3,6 +3,49 @@
 "use strict";
 
 //----------------------------------------------------
+// / Go to top
+//----------------------------------------------------
+
+$(function () {
+  var gototop = $(".js-gototop");
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 500) {
+      gototop.addClass("is-active");
+    } else {
+      gototop.removeClass("is-active");
+    }
+  });
+  gototop.click(function () {
+    $("body,html").animate({
+      scrollTop: 0
+    }, 300);
+    return false;
+  });
+});
+
+//----------------------------------------------------
+// Menu
+//----------------------------------------------------
+
+$(".js-menu-toggle").on("click", function () {
+  $(".js-menu-toggle").toggleClass("is-active");
+  $(".js-menu-content").toggleClass("is-active");
+});
+
+$(".js-menu-content a").on("click", function () {
+  $(".js-menu-toggle").toggleClass("is-active");
+  $(".js-menu-content").toggleClass("is-active");
+});
+
+//----------------------------------------------------
+// Micromodal
+//----------------------------------------------------
+
+//MicroModal.init({
+//  awaitCloseAnimation: true
+//})
+
+//----------------------------------------------------
 // Smooth scroll
 //----------------------------------------------------
 
