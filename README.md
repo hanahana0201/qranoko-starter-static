@@ -4,7 +4,7 @@
 
 Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qranoko.jp/)」が静的サイト制作に使っているスターターテンプレートです。
 
-目的は、実務で使う標準的なコードのテンプレート化・アップデートによって、ユニット・コミュニティメンバー・共同制作者の業務を効率化すること。各項目の実装経緯や詳細は以下 Feature・リポジトリの [Issue](https://github.com/qrac/qranoko-starter-static/issues)、ユニットの選定技術をドキュメント化している [Qranoko Docs](https://docs.qranoko.jp/) をご確認ください。
+目的は、実務で使う標準的なコードのテンプレート化・アップデートによって、ユニット・コミュニティメンバー・共同制作者の業務を効率化すること。各項目の実装経緯や詳細はリポジトリの [Issue](https://github.com/qrac/qranoko-starter-static/issues)、ユニットの技術をドキュメント化している [Qranoko Docs](https://docs.qranoko.jp/) からある程度辿れます。
 
 ## Feature
 
@@ -15,17 +15,14 @@ Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qra
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
 - [Babel](https://babeljs.io/)
 - [UglifyJS 3](https://github.com/mishoo/UglifyJS2)
+- [SVG Sprite](https://github.com/jkphl/svg-sprite)
 - [Browsersync](https://browsersync.io/)
 
-## Detail
+## Use
 
-### package.json
-
-[npm の仕様](https://docs.npmjs.com/files/package.json)に基づいた記述に、プロジェクト情報・Organization 情報を加えて `package.json` を作成。設定済み項目を上書きすることで必要な情報を集約、同時にプロジェクト内で変数として使えるようにします。
-
-npm ライブラリを作成する際は、`private` を `false` または項目自体を削除して `npm publish` してください。デフォルトで `true` を設定しているのは、非公開情報をミスで公開しないためです。
-
-- [package.json の書き方を整える · Issue #1 · qrac/qranoko-starter-static](https://github.com/qrac/qranoko-starter-static/issues/1)
+```bash
+$ git clone --depth 1 https://github.com/qrac/qranoko-starter-static.git && cd qranoko-starter-static && rm -rf ./.git ./README.md && mv * ../ && cd ../ && rm -rf ./qranoko-starter-static
+```
 
 ## Support
 
