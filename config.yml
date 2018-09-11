@@ -17,9 +17,10 @@ apple_mobile_web_app:
 pages:
   index:
     id: index
+    layout: front-page
     title: Index Title
     desc: Index Description
-    class:
+    classes:
       - project-index
       - project-home
     url: index.html
@@ -32,8 +33,7 @@ pages:
     develop: true
 
 menu:
-  index:
-    id: index
+  - id: index
     title: HOME
     url: /
     visible: true

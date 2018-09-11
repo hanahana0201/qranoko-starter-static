@@ -1,11 +1,10 @@
-/*! Qranoko Starter Static v0.9.0 MIT by Qrac */
+/*! Qranoko Starter Static v1.0.0 MIT by Qrac */
 
 "use strict";
 
 //----------------------------------------------------
 // / Go to top
 //----------------------------------------------------
-
 $(function () {
   var gototop = $(".js-gototop");
   $(window).scroll(function () {
@@ -21,9 +20,7 @@ $(function () {
     }, 300);
     return false;
   });
-});
-
-//----------------------------------------------------
+}); //----------------------------------------------------
 // Menu
 //----------------------------------------------------
 
@@ -31,20 +28,15 @@ $(".js-menu-toggle").on("click", function () {
   $(".js-menu-toggle").toggleClass("is-active");
   $(".js-menu-content").toggleClass("is-active");
 });
-
 $(".js-menu-content a").on("click", function () {
   $(".js-menu-toggle").toggleClass("is-active");
   $(".js-menu-content").toggleClass("is-active");
-});
-
-//----------------------------------------------------
+}); //----------------------------------------------------
 // Micromodal
 //----------------------------------------------------
-
 //MicroModal.init({
 //  awaitCloseAnimation: true
 //})
-
 //----------------------------------------------------
 // Smooth scroll
 //----------------------------------------------------
@@ -55,7 +47,9 @@ $(function () {
     var href = $(this).attr("href");
     var target = $(href == "#" || href == "" ? "html" : href);
     var position = target.offset().top;
-    $("body,html").animate({ scrollTop: position }, speed, "swing");
+    $("body,html").animate({
+      scrollTop: position
+    }, speed, "swing");
     return false;
   });
 });

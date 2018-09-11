@@ -1,0 +1,24 @@
+<%#
+//----------------------------------------------------
+// Menu: Global
+//----------------------------------------------------
+%>
+<nav class="menu is-global">
+  <ul class="menu-list js-menu-content">
+    <% for (menu_item of menu) { %>
+      <li class="menu-item"><a href="<%= menu_item.url %>"><%= menu_item.title %></a></li>
+    <% } %>
+  </ul>
+  <div class="btns">
+    <button class="btn is-plain is-menu is-circle js-menu-toggle" type="button">
+      <svg class="icon is-menu" role="img">
+        <title>menu</title>
+        <use xlink:href="<%= climb %><%= path.img %>/sprite.svg#menu"></use>
+      </svg>
+      <svg class="icon is-close" role="img">
+        <title>close</title>
+        <use xlink:href="<%= climb %><%= path.img %>/sprite.svg#close"></use>
+      </svg>
+    </button>
+  </div>
+</nav>

@@ -2,14 +2,16 @@
 // gulp: Setting
 //----------------------------------------------------
 
-const fs = require("fs")
 const gulp = require("gulp")
+const fs = require("fs")
 const notify = require("gulp-notify")
 const plumber = require("gulp-plumber")
 const rename = require("gulp-rename")
 const header = require("gulp-header")
 const gulpif = require("gulp-if")
 const browserSync = require("browser-sync")
+const htmlbeautify = require("gulp-html-beautify")
+const ejs = require("gulp-ejs")
 const pug = require("gulp-pug")
 const data = require("gulp-data")
 const yaml = require("js-yaml")
@@ -26,14 +28,13 @@ const concat = require("gulp-concat")
 const uglify = require("gulp-uglify")
 const svgSprite = require("gulp-svg-sprite")
 
-// Require File
-const package = require("./package.json")
-
 // Read File
 const files = {
   package: "./package.json",
   config: "./config.yml"
 }
+const package = JSON.parse(fs.readFileSync(files.package))
+const config = yaml.safeLoad(fs.readFileSync(files.config))
 
 // Banner
 const banner = {
@@ -49,6 +50,7 @@ const banner = {
 const paths = {
   src: {
     dir: package.project.src + "/",
+    ejs: package.project.src + "/ejs/",
     pug: package.project.src + "/pug/",
     scss: package.project.src + "/scss/",
     js: package.project.src + "/js/",
@@ -61,6 +63,14 @@ const paths = {
     js: package.project.dist + "/assets/js/",
     img: package.project.dist + "/assets/img/"
   }
+}
+
+// HTML Beauty Options
+const htmlbeautifyOptions = {
+  indent_size: 2,
+  max_preserve_newlines: 0,
+  indent_inner_html: true,
+  extra_liners: []
 }
 
 // Pug Options
@@ -104,10 +114,39 @@ const browserSyncOption = {
 // gulp: Task
 //----------------------------------------------------
 
-// Pug > HTML
+// EJS > HTML
+gulp.task("ejs", function(done) {
+  for (const key in config.pages) {
+    const page = config.pages[key]
+    page.path = key
+    const layout = page.layout
+    gulp
+      .src(paths.src.ejs + layout + ".ejs")
+      .pipe(
+        plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
+      )
+      .pipe(
+        data(function() {
+          return JSON.parse(fs.readFileSync(files.package))
+        })
+      )
+      .pipe(
+        data(function() {
+          return yaml.safeLoad(fs.readFileSync(files.config))
+        })
+      )
+      .pipe(ejs(page))
+      .pipe(rename(key + ".html"))
+      .pipe(htmlbeautify(htmlbeautifyOptions))
+      .pipe(gulp.dest(paths.dist.html))
+    done()
+  }
+})
+
+// Pug > HTML (Develop)
 gulp.task("pug", () => {
   return gulp
-    .src([paths.src.pug + "**/*.pug", "!" + paths.src.pug + "**/_*.pug"])
+    .src(paths.src.pug + "develop.pug")
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
@@ -162,7 +201,7 @@ gulp.task("babel", () => {
     .pipe(concat("app.js"))
     .pipe(
       babel({
-        presets: ["env"]
+        presets: ["@babel/env"]
       })
     )
     .pipe(gulpif(banner.visible, header(banner.basic, { package: package })))
@@ -232,8 +271,8 @@ gulp.task("reload", function(done) {
 // Watch
 gulp.task("watch", () => {
   gulp.watch(
-    [paths.src.pug + "**/*.pug", "!" + paths.src.pug + "**/_*.pug"],
-    gulp.series("pug", "reload")
+    [paths.src.ejs + "**/*.ejs", "!" + paths.src.ejs + "**/_*.ejs"],
+    gulp.series("ejs", "reload")
   )
   gulp.watch(
     paths.src.scss + "**/*.scss",
@@ -252,6 +291,7 @@ gulp.task("default", gulp.parallel("browser-sync", "watch"))
 gulp.task(
   "build",
   gulp.parallel(
+    gulp.series("ejs"),
     gulp.series("pug"),
     gulp.series("scss", "cssmin"),
     gulp.series("babel", "uglify"),

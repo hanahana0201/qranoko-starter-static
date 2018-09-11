@@ -1,0 +1,20 @@
+<%#
+//----------------------------------------------------
+// Header
+//----------------------------------------------------
+%>
+<%
+  dateNow = Date.now();
+  dateNowYear = new Date().getFullYear()
+%>
+<!DOCTYPE html>
+<html lang="ja">
+<%- include("./inc/_head") %>
+<body class="<%= site.class %><% for (classes_item of classes) { %> <%= classes_item %><% } %>" ontouchstart>
+
+<header class="section is-header" id="header">
+  <div class="inner">
+    <%- include("./tmp/_logo") %>
+    <%- include("./tmp/_menu-global") %>
+  </div>
+</header>

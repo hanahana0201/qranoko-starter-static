@@ -9,6 +9,7 @@ Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qra
 ## Feature
 
 - [gulp v4](https://gulpjs.com/)
+- [EJS](http://ejs.co/)
 - [Pug](https://pugjs.org/)
 - [Sass(SCSS)](https://sass-lang.com/)
 - [PostCSS](https://postcss.org/)

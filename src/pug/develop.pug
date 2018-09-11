@@ -62,7 +62,7 @@ html(lang="ja")
           each val in pages
             if val.develop === true
               li.item
-                a.text.is-link-reverse.is-primary(href=val.url style="color:" + project.link_text_color + ";")
+                a.text.is-link-reverse.is-primary(href=val.url)
                   span= val.title
         if repository
           .btns.is-right.is-xs
