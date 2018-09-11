@@ -8,7 +8,7 @@
   "name": "qranoko-starter-static",
   "description": "Starter template for developing static websites made by QRANOKO of web production unit.",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.9.0",
   "license": "MIT",
   "homepage": "https://github.com/qrac/qranoko-starter-static#readme",
   "repository": "https://github.com/qrac/qranoko-starter-static",
