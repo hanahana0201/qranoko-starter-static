@@ -22,7 +22,7 @@ Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qra
 ## Install
 
 ```bash
-$ git clone --depth 1 https://github.com/qrac/qranoko-starter-static.git && cd qranoko-starter-static && rm -rf ./.git ./README.md && mv * ../ && cd ../ && rm -rf ./qranoko-starter-static
+$ git clone --depth 1 https://github.com/qrac/qranoko-starter-static.git && cd qranoko-starter-static && rm -rf ./.git ./README.md && mv * .[^\.]* ../ && cd ../ && rm -rf ./qranoko-starter-static
 ```
 
 ## Support
