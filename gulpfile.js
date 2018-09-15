@@ -279,7 +279,7 @@ gulp.task("watch", () => {
     gulp.series("scss", "cssmin", "reload")
   )
   gulp.watch(paths.src.js + "**/*.js", gulp.series("babel", "uglify", "reload"))
-  gulp.watch(paths.src.icon + "**/*.svg", gulp.series("sprite"))
+  gulp.watch(paths.src.icon + "**/*.svg", gulp.series("sprite", "reload"))
 })
 
 gulp.task("default", gulp.parallel("browser-sync", "watch"))
