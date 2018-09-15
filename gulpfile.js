@@ -105,7 +105,7 @@ const browserSyncOption = {
   server: {
     baseDir: paths.dist.html
   },
-  startPath: "./develop.html",
+  startPath: "develop.html",
   open: false,
   notify: false
 }
