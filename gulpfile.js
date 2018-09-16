@@ -88,20 +88,20 @@ const sassOptions = {
 }
 
 // Autoprefixer Options
-const autoprefixerOption = {
+const autoprefixerOptions = {
   grid: true
 }
 
 // PostCSS Options
-const postcssOption = [flexBugsFixes, autoprefixer(autoprefixerOption)]
+const postcssOptions = [flexBugsFixes, autoprefixer(autoprefixerOptions)]
 
 // Uglify Options
-const uglifyOption = {
+const uglifyOptions = {
   output: { comments: /^!/ }
 }
 
 // BrowserSync Options
-const browserSyncOption = {
+const browserSyncOptions = {
   server: {
     baseDir: paths.dist.html
   },
@@ -173,7 +173,7 @@ gulp.task("scss", () => {
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
     .pipe(sass(sassOptions))
-    .pipe(postcss(postcssOption))
+    .pipe(postcss(postcssOptions))
     .pipe(gcmq())
     .pipe(gulpif(banner.visible, header(banner.basic, { package: package })))
     .pipe(gulp.dest(paths.dist.css))
@@ -215,7 +215,7 @@ gulp.task("uglify", () => {
     .pipe(
       plumber({ errorHandler: notify.onError("Error: <%= error.message %>") })
     )
-    .pipe(uglify(uglifyOption))
+    .pipe(uglify(uglifyOptions))
     .pipe(rename({ suffix: ".min" }))
     .pipe(gulp.dest(paths.dist.js))
 })
@@ -259,7 +259,7 @@ gulp.task("sprite", function() {
 
 // Browser Sync
 gulp.task("browser-sync", function(done) {
-  browserSync.init(browserSyncOption)
+  browserSync.init(browserSyncOptions)
   done()
 })
 
