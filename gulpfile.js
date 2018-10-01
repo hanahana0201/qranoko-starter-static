@@ -30,38 +30,38 @@ const svgSprite = require("gulp-svg-sprite")
 
 // Read File
 const files = {
-  package: "./package.json",
+  pkg: "./package.json",
   config: "./config.yml"
 }
-const package = JSON.parse(fs.readFileSync(files.package))
+const pkg = JSON.parse(fs.readFileSync(files.pkg))
 const config = yaml.safeLoad(fs.readFileSync(files.config))
 
 // Banner
 const banner = {
   basic: [
-    "/*! <%= package.project.name %> v<%= package.version %> <%= package.license %> by <%= package.author.name %> */",
+    "/*! <%= pkg.project.name %> v<%= pkg.version %> <%= pkg.license %> by <%= pkg.author.name %> */",
     "",
     ""
   ].join("\n"),
-  visible: package.project.banner
+  visible: pkg.project.banner
 }
 
 // Paths
 const paths = {
   src: {
-    dir: package.project.src + "/",
-    ejs: package.project.src + "/ejs/",
-    pug: package.project.src + "/pug/",
-    scss: package.project.src + "/scss/",
-    js: package.project.src + "/js/",
-    icon: package.project.src + "/icon/"
+    dir: pkg.project.src + "/",
+    ejs: pkg.project.src + "/ejs/",
+    pug: pkg.project.src + "/pug/",
+    scss: pkg.project.src + "/scss/",
+    js: pkg.project.src + "/js/",
+    icon: pkg.project.src + "/icon/"
   },
   dist: {
-    dir: package.project.dist + "/",
-    html: package.project.dist + "/",
-    css: package.project.dist + "/assets/css/",
-    js: package.project.dist + "/assets/js/",
-    img: package.project.dist + "/assets/img/"
+    dir: pkg.project.dist + "/",
+    html: pkg.project.dist + "/",
+    css: pkg.project.dist + "/assets/css/",
+    js: pkg.project.dist + "/assets/js/",
+    img: pkg.project.dist + "/assets/img/"
   }
 }
 
@@ -127,7 +127,7 @@ gulp.task("ejs", function(done) {
       )
       .pipe(
         data(function() {
-          return JSON.parse(fs.readFileSync(files.package))
+          return JSON.parse(fs.readFileSync(files.pkg))
         })
       )
       .pipe(
@@ -152,7 +152,7 @@ gulp.task("pug", () => {
     )
     .pipe(
       data(function() {
-        return JSON.parse(fs.readFileSync(files.package))
+        return JSON.parse(fs.readFileSync(files.pkg))
       })
     )
     .pipe(
@@ -175,7 +175,7 @@ gulp.task("scss", () => {
     .pipe(sass(sassOptions))
     .pipe(postcss(postcssOptions))
     .pipe(gcmq())
-    .pipe(gulpif(banner.visible, header(banner.basic, { package: package })))
+    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg })))
     .pipe(gulp.dest(paths.dist.css))
 })
 
@@ -204,7 +204,7 @@ gulp.task("babel", () => {
         presets: ["@babel/env"]
       })
     )
-    .pipe(gulpif(banner.visible, header(banner.basic, { package: package })))
+    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg })))
     .pipe(gulp.dest(paths.dist.js))
 })
 
