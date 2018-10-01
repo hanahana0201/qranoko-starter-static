@@ -4,10 +4,11 @@
 
 .menu.is-global {
   @include desktop {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 0.75em;
+    display: flex;
     align-items: center;
+    > *:not(:first-child) {
+      margin-left: 0.75em;
+    }
   }
   .menu-list {
     @include mobile-tablet {

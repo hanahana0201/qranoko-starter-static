@@ -9,8 +9,8 @@
   box-shadow: 0 2px 2px 0 rgba(103, 128, 108, 0.25);
   z-index: 100;
   > .inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     height: $pjt-header-height;
   }
@@ -25,9 +25,6 @@
 
 .section.is-front-basic {
   position: relative;
-  display: grid;
-  align-items: center;
-  min-height: 60vh;
   padding: 2.5em 0;
   &.is-anchor-fix {
     margin-top: -$pjt-header-height;
@@ -78,10 +75,9 @@
   padding: 2.5em 0;
   background-color: $blue-grey-700;
   .widgets {
-    display: grid;
-    grid-gap: 1em;
     @include tablet {
-      grid-template-columns: auto auto;
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
     }
     .widget {
