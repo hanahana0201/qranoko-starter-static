@@ -12,7 +12,7 @@
   .menu-list {
     @include mobile-tablet {
       position: absolute;
-      top: $project-header-height;
+      top: $pjt-header-height;
       right: 0;
       width: 100vw;
       background-color: $light;
@@ -37,7 +37,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: $project-header-height;
+    height: $pjt-header-height;
     padding: 0 0.75em;
     transition: 0.12s ease-out;
     &:hover,
