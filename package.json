@@ -1,10 +1,4 @@
 {
-  "project": {
-    "name": "Qranoko Starter Static",
-    "dist": "dist",
-    "src": "src",
-    "banner": true
-  },
   "name": "qranoko-starter-static",
   "description": "Starter template for developing static websites made by QRANOKO of web production unit.",
   "private": true,

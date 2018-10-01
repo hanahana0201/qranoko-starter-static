@@ -1,6 +1,12 @@
 #-----------------------------------------------------
-# Config
+# Project
 #-----------------------------------------------------
+
+setting:
+  name: Qranoko Starter Static
+  dist: dist
+  src: src
+  banner: true
 
 site:
   title: Site Title

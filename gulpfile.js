@@ -31,37 +31,37 @@ const svgSprite = require("gulp-svg-sprite")
 // Read File
 const files = {
   pkg: "./package.json",
-  config: "./config.yml"
+  pjt: "./project.yml"
 }
 const pkg = JSON.parse(fs.readFileSync(files.pkg))
-const config = yaml.safeLoad(fs.readFileSync(files.config))
+const pjt = yaml.safeLoad(fs.readFileSync(files.pjt))
 
 // Banner
 const banner = {
   basic: [
-    "/*! <%= pkg.project.name %> v<%= pkg.version %> <%= pkg.license %> by <%= pkg.author.name %> */",
+    "/*! <%= pjt.setting.name %> v<%= pkg.version %> <%= pkg.license %> by <%= pkg.author.name %> */",
     "",
     ""
   ].join("\n"),
-  visible: pkg.project.banner
+  visible: pjt.setting.banner
 }
 
 // Paths
 const paths = {
   src: {
-    dir: pkg.project.src + "/",
-    ejs: pkg.project.src + "/ejs/",
-    pug: pkg.project.src + "/pug/",
-    scss: pkg.project.src + "/scss/",
-    js: pkg.project.src + "/js/",
-    icon: pkg.project.src + "/icon/"
+    dir: pjt.setting.src + "/",
+    ejs: pjt.setting.src + "/ejs/",
+    pug: pjt.setting.src + "/pug/",
+    scss: pjt.setting.src + "/scss/",
+    js: pjt.setting.src + "/js/",
+    icon: pjt.setting.src + "/icon/"
   },
   dist: {
-    dir: pkg.project.dist + "/",
-    html: pkg.project.dist + "/",
-    css: pkg.project.dist + "/assets/css/",
-    js: pkg.project.dist + "/assets/js/",
-    img: pkg.project.dist + "/assets/img/"
+    dir: pjt.setting.dist + "/",
+    html: pjt.setting.dist + "/",
+    css: pjt.setting.dist + "/assets/css/",
+    js: pjt.setting.dist + "/assets/js/",
+    img: pjt.setting.dist + "/assets/img/"
   }
 }
 
@@ -116,8 +116,8 @@ const browserSyncOptions = {
 
 // EJS > HTML
 gulp.task("ejs", function(done) {
-  for (const key in config.pages) {
-    const page = config.pages[key]
+  for (const key in pjt.pages) {
+    const page = pjt.pages[key]
     page.path = key
     const layout = page.layout
     gulp
@@ -132,7 +132,7 @@ gulp.task("ejs", function(done) {
       )
       .pipe(
         data(function() {
-          return yaml.safeLoad(fs.readFileSync(files.config))
+          return yaml.safeLoad(fs.readFileSync(files.pjt))
         })
       )
       .pipe(ejs(page))
@@ -157,7 +157,7 @@ gulp.task("pug", () => {
     )
     .pipe(
       data(function() {
-        return yaml.safeLoad(fs.readFileSync(files.config))
+        return yaml.safeLoad(fs.readFileSync(files.pjt))
       })
     )
     .pipe(pug(pugOptions))
@@ -175,7 +175,7 @@ gulp.task("scss", () => {
     .pipe(sass(sassOptions))
     .pipe(postcss(postcssOptions))
     .pipe(gcmq())
-    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg })))
+    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg, pjt: pjt })))
     .pipe(gulp.dest(paths.dist.css))
 })
 
@@ -204,7 +204,7 @@ gulp.task("babel", () => {
         presets: ["@babel/env"]
       })
     )
-    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg })))
+    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg, pjt: pjt })))
     .pipe(gulp.dest(paths.dist.js))
 })
 
