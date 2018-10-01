@@ -66,6 +66,7 @@ const paths = {
   }
 }
 
+// EJS Options
 const ejsOptions = {
   root: paths.src.ejs
 }
