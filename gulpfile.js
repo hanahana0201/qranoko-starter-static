@@ -54,6 +54,7 @@ const paths = {
     pug: pjt.setting.src + "/pug/",
     scss: pjt.setting.src + "/scss/",
     js: pjt.setting.src + "/js/",
+    img: pjt.setting.src + "/img/",
     icon: pjt.setting.src + "/icon/"
   },
   dist: {
@@ -220,6 +221,11 @@ gulp.task("uglify", () => {
     .pipe(gulp.dest(paths.dist.js))
 })
 
+// Image Copy
+gulp.task("imgcopy", () => {
+  return gulp.src(paths.src.img + "*").pipe(gulp.dest(paths.dist.img))
+})
+
 // SVG Sprite Icon
 gulp.task("sprite", function() {
   return gulp
@@ -279,6 +285,7 @@ gulp.task("watch", () => {
     gulp.series("scss", "cssmin", "reload")
   )
   gulp.watch(paths.src.js + "**/*.js", gulp.series("babel", "uglify", "reload"))
+  gulp.watch(paths.src.img + "*", gulp.series("imgcopy", "reload"))
   gulp.watch(paths.src.icon + "**/*.svg", gulp.series("sprite", "reload"))
 })
 
@@ -295,6 +302,7 @@ gulp.task(
     gulp.series("pug"),
     gulp.series("scss", "cssmin"),
     gulp.series("babel", "uglify"),
+    gulp.series("imgcopy"),
     gulp.series("sprite")
   )
 )

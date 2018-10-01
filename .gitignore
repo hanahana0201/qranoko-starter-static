@@ -16,4 +16,4 @@ node_modules
 .nuxt
 
 # Distribution
-#dist
+dist
