@@ -66,6 +66,10 @@ const paths = {
   }
 }
 
+const ejsOptions = {
+  root: paths.src.ejs
+}
+
 // HTML Beauty Options
 const htmlbeautifyOptions = {
   indent_size: 2,
@@ -136,7 +140,7 @@ gulp.task("ejs", function(done) {
           return yaml.safeLoad(fs.readFileSync(files.pjt))
         })
       )
-      .pipe(ejs(page))
+      .pipe(ejs(page, ejsOptions))
       .pipe(rename(key + ".html"))
       .pipe(htmlbeautify(htmlbeautifyOptions))
       .pipe(gulp.dest(paths.dist.html))
