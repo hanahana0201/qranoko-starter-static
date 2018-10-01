@@ -14,7 +14,6 @@ const htmlbeautify = require("gulp-html-beautify")
 const ejs = require("gulp-ejs")
 const pug = require("gulp-pug")
 const data = require("gulp-data")
-const yaml = require("js-yaml")
 const sass = require("gulp-sass")
 const sassGlob = require("gulp-sass-glob")
 const postcss = require("gulp-postcss")
@@ -31,10 +30,10 @@ const svgSprite = require("gulp-svg-sprite")
 // Read File
 const files = {
   pkg: "./package.json",
-  pjt: "./project.yml"
+  pjt: "./project.json"
 }
 const pkg = JSON.parse(fs.readFileSync(files.pkg))
-const pjt = yaml.safeLoad(fs.readFileSync(files.pjt))
+const pjt = JSON.parse(fs.readFileSync(files.pjt))
 
 // Banner
 const banner = {
@@ -138,7 +137,7 @@ gulp.task("ejs", function(done) {
       )
       .pipe(
         data(function() {
-          return yaml.safeLoad(fs.readFileSync(files.pjt))
+          return JSON.parse(fs.readFileSync(files.pjt))
         })
       )
       .pipe(ejs(page, ejsOptions))
@@ -163,7 +162,7 @@ gulp.task("pug", () => {
     )
     .pipe(
       data(function() {
-        return yaml.safeLoad(fs.readFileSync(files.pjt))
+        return JSON.parse(fs.readFileSync(files.pjt))
       })
     )
     .pipe(pug(pugOptions))
@@ -181,7 +180,7 @@ gulp.task("scss", () => {
     .pipe(sass(sassOptions))
     .pipe(postcss(postcssOptions))
     .pipe(gcmq())
-    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg, pjt: pjt })))
+    .pipe(gulpif(banner.visible, header(banner.basic, { pkg, pjt })))
     .pipe(gulp.dest(paths.dist.css))
 })
 
@@ -210,7 +209,7 @@ gulp.task("babel", () => {
         presets: ["@babel/env"]
       })
     )
-    .pipe(gulpif(banner.visible, header(banner.basic, { pkg: pkg, pjt: pjt })))
+    .pipe(gulpif(banner.visible, header(banner.basic, { pkg, pjt })))
     .pipe(gulp.dest(paths.dist.js))
 })
 

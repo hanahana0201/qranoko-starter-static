@@ -58,7 +58,6 @@
     "gulp-svg-sprite": "^1.5.0",
     "gulp-uglify": "^3.0.1",
     "iostone": "^3.0.0",
-    "js-yaml": "^3.12.0",
     "jstransformer-markdown-it": "^2.1.0",
     "moftone": "^6.2.0",
     "musubii": "^6.5.0",

@@ -1,0 +1,63 @@
+{
+  "setting": {
+    "name": "Qranoko Starter Static",
+    "dist": "dist",
+    "src": "src",
+    "banner": true
+  },
+  "site": {
+    "title": "Site Title",
+    "desc": "Site Description",
+    "class": "project",
+    "url": "https://example.com",
+    "color": "#1cb4c7"
+  },
+  "apple_mobile_web_app": {
+    "mode": true,
+    "status_bar_style": "default",
+    "title": "App Title"
+  },
+  "pages": {
+    "index": {
+      "id": "index",
+      "layout": "front-page",
+      "title": "Index Title",
+      "desc": "Index Description",
+      "classes": ["project-index", "project-home"],
+      "url": "index.html",
+      "climb": "/",
+      "ogimg": "ogp.png",
+      "ogtype": "website",
+      "twcard": "summary_large_image",
+      "agent": "rwd",
+      "login": false,
+      "develop": true
+    }
+  },
+  "menu": [
+    {
+      "id": "index",
+      "title": "HOME",
+      "url": "/",
+      "visible": true
+    }
+  ],
+  "path": {
+    "img": "assets/img",
+    "font": "assets/font",
+    "css": "assets/css",
+    "js": "assets/js"
+  },
+  "social": {
+    "twitter": {
+      "class": "twitter",
+      "id": "Qrac_JP",
+      "url": "https://twitter.com"
+    },
+    "github": {
+      "class": "github",
+      "id": "qrac",
+      "url": "https://github.com"
+    }
+  }
+}
