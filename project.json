@@ -20,7 +20,7 @@
   "pages": {
     "index": {
       "id": "index",
-      "layout": "front-page",
+      "layout": "index",
       "title": "Index Title",
       "desc": "Index Description",
       "classes": ["project-index", "project-home"],

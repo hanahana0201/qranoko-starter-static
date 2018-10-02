@@ -1,8 +1,13 @@
 <%#
 //----------------------------------------------------
-// Front Page
+// Index
 //----------------------------------------------------
 %>
+<!DOCTYPE html>
+<html lang="ja">
+<%- include("/config/_head") %>
+<body class="<%= site.class %><% for (classes_item of classes) { %> <%= classes_item %><% } %>" ontouchstart>
+
 <%- include("/header") %>
 
 <!-- + Main -->
@@ -16,3 +21,7 @@
 <!-- - Main -->
 
 <%- include("/footer") %>
+
+<%- include("/config/_script") %>
+</body>
+</html>
