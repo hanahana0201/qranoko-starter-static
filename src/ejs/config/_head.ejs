@@ -28,9 +28,9 @@
 <meta property="og:title" content="<%= title %>">
 <meta property="og:description" content="<%= desc %>">
 <meta property="og:url" content="<%= site.url %>/<%= url %>">
-<meta property="og:image" content="<%= site.url %>/<%= path.img %>/<%= ogimg %>?ver=<%= dateNow %>">
+<meta property="og:image" content="<%= site.url %>/<%= path.img %>/<%= site.og.img %>?ver=<%= dateNow %>">
 <meta property="og:site_name" content="<%= site.title %>">
-<meta property="og:type" content="<%= ogtype %>">
+<meta property="og:type" content="<%= site.og.type %>">
 
 <%#
 //----------------------------------------------------
@@ -38,9 +38,9 @@
 //----------------------------------------------------
 %>
 
-<meta name="twitter:card" content="<%= twcard %>">
-<% if (social.twitter.id) { %>
-  <meta name="twitter:creator" content="@<%= social.twitter.id %>">
+<meta name="twitter:card" content="<%= site.twitter.card %>">
+<% if (site.twitter.id) { %>
+  <meta name="twitter:creator" content="@<%= site.twitter.id %>">
 <% } %>
 
 <%#
@@ -59,10 +59,10 @@
 //----------------------------------------------------
 %>
 
-<% if (apple_mobile_web_app.mode === true) { %>
+<% if (site.apple_mobile_web_app.mode === true) { %>
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="<%= apple_mobile_web_app.status_bar_style %>">
-  <meta name="apple-mobile-web-app-title" content="<%= apple_mobile_web_app.title %>">
+  <meta name="apple-mobile-web-app-status-bar-style" content="<%= site.apple_mobile_web_app.status_bar_style %>">
+  <meta name="apple-mobile-web-app-title" content="<%= site.apple_mobile_web_app.title %>">
 <% } %>
 
 <%#

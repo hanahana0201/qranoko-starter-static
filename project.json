@@ -7,15 +7,30 @@
   },
   "site": {
     "title": "Site Title",
-    "desc": "Site Description",
+    "subtitle": "Site Sub Title",
+    "description": "Site Description",
     "class": "project",
     "url": "https://example.com",
-    "color": "#1cb4c7"
+    "color": "#1cb4c7",
+    "og": {
+      "type": "website",
+      "img": "ogp.png"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "id": "Qrac_JP"
+    },
+    "apple_mobile_web_app": {
+      "mode": true,
+      "status_bar_style": "default",
+      "title": "App Title"
+    }
   },
-  "apple_mobile_web_app": {
-    "mode": true,
-    "status_bar_style": "default",
-    "title": "App Title"
+  "path": {
+    "img": "assets/img",
+    "font": "assets/font",
+    "css": "assets/css",
+    "js": "assets/js"
   },
   "pages": {
     "index": {
@@ -26,9 +41,14 @@
       "classes": ["project-index", "project-home"],
       "url": "index.html",
       "climb": "/",
-      "ogimg": "ogp.png",
-      "ogtype": "website",
-      "twcard": "summary_large_image",
+      "og": {
+        "type": "website",
+        "img": "ogp.png"
+      },
+      "twitter": {
+        "card": "summary_large_image",
+        "id": "Qrac_JP"
+      },
       "agent": "rwd",
       "login": false,
       "develop": true
@@ -41,23 +61,5 @@
       "url": "/",
       "visible": true
     }
-  ],
-  "path": {
-    "img": "assets/img",
-    "font": "assets/font",
-    "css": "assets/css",
-    "js": "assets/js"
-  },
-  "social": {
-    "twitter": {
-      "class": "twitter",
-      "id": "Qrac_JP",
-      "url": "https://twitter.com"
-    },
-    "github": {
-      "class": "github",
-      "id": "qrac",
-      "url": "https://github.com"
-    }
-  }
+  ]
 }
