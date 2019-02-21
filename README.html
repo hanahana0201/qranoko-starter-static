@@ -1,0 +1,75 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>README.md</title>
+      </head>
+      <body>
+        <h1 id="qranoko-starter-static-for-propres">Qranoko Starter Static - for Propres</h1>
+<h2 id="about">About</h2>
+<p>Qranoko Starter Staticは、Web制作ユニット「<a href="https://qranoko.jp/">クラのこ</a>」が静的サイト制作に使っているスターターテンプレート「Qranoko Starter Static（<a href="https://github.com/qrac/qranoko-starter-static）」をgulpやyarnを使わずPreprosで使えるようにしたものです。">https://github.com/qrac/qranoko-starter-static）」をgulpやyarnを使わずPreprosで使えるようにしたものです。</a></p>
+<p>目的は、ターミナルが苦手な人でも作業効率化できるようにしたいと思い作成しました。</p>
+<h2 id="modification">Modification</h2>
+<p>基本的には、gulpfileの内容をPreprosで扱えるように変更しただけです。</p>
+<ul>
+<li>ejsからpugに過去のバージョンを参考に変更しました。</li>
+<li>iostone,moftone,musubii,shitakocss,sass-dashiのscssファイルをsrc/scssフォルダーに追加しました。</li>
+<li>project.jsonをsrc/pug/base/_config.pugに変更しました。</li>
+<li>src/js/app.jsを作成し、1つのファイルにまとめました。</li>
+</ul>
+<h2 id="install">Install</h2>
+<pre><code class="lang-bash">$ git clone --depth 1 https://github.com/hanahana0201/qranoko-starter-static-for-prepros.git &amp;&amp; cd qranoko-starter-static &amp;&amp; rm -rf ./.git ./README.md &amp;&amp; mv * .[^\.]* ../ &amp;&amp; cd ../ &amp;&amp; rm -rf ./qranoko-starter-static
+</code></pre>
+<h2 id="support">Support</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Chrome</th>
+<th style="text-align:center">Firefox</th>
+<th style="text-align:center">IE</th>
+<th style="text-align:center">Ege</th>
+<th style="text-align:center">Safari(Mac)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Newest</td>
+<td style="text-align:center">Newest</td>
+<td style="text-align:center">11~</td>
+<td style="text-align:center">Newest</td>
+<td style="text-align:center">Newest</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Safari(iOS)</th>
+<th style="text-align:center">Chrome(Android)</th>
+<th style="text-align:center">Browser(Android)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Newest</td>
+<td style="text-align:center">Newest</td>
+<td style="text-align:center">4.4~</td>
+</tr>
+</tbody>
+</table>
+<h2 id="develop">Develop</h2>
+<ul>
+<li>Mac mini 2018</li>
+<li>OS: macOS Mojave 10.14.3</li>
+<li>Prepros: 6.3.0</li>
+</ul>
+<h2 id="license">License</h2>
+<ul>
+<li>MIT</li>
+</ul>
+<h2 id="credit">Credit</h2>
+<ul>
+<li>Author: <a href="https://centi-meter.net/">Centimeter</a></li>
+</ul>
+
+      </body>
+    </html>

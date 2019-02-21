@@ -1,28 +1,24 @@
-# Qranoko Starter Static
+# Qranoko Starter Static - for Propres
 
 ## About
 
-Qranoko Starter Static は、Web 制作ユニット「[クラのこ](https://qranoko.jp/)」が静的サイト制作に使っているスターターテンプレートです。
+Qranoko Starter Staticは、Web制作ユニット「[クラのこ](https://qranoko.jp/)」が静的サイト制作に使っているスターターテンプレート「Qranoko Starter Static（https://github.com/qrac/qranoko-starter-static）」をgulpやyarnを使わずPreprosで使えるようにしたものです。
 
-目的は、実務で使う標準的なコードのテンプレート化・アップデートによって、ユニット・コミュニティメンバー・共同制作者の業務を効率化すること。各項目の実装経緯や詳細はリポジトリの [Issue](https://github.com/qrac/qranoko-starter-static/issues)、ユニットの技術をドキュメント化している [Qranoko Docs](https://docs.qranoko.jp/) からある程度辿れます。
+目的は、ターミナルが苦手な人でも作業効率化できるようにしたいと思い作成しました。
 
-## Feature
+## Modification
 
-- [gulp v4](https://gulpjs.com/)
-- [EJS](http://ejs.co/)
-- [Pug](https://pugjs.org/)
-- [Sass(SCSS)](https://sass-lang.com/)
-- [PostCSS](https://postcss.org/)
-- [Autoprefixer](https://github.com/postcss/autoprefixer)
-- [Babel](https://babeljs.io/)
-- [UglifyJS 3](https://github.com/mishoo/UglifyJS2)
-- [SVG Sprite](https://github.com/jkphl/svg-sprite)
-- [Browsersync](https://browsersync.io/)
+基本的には、gulpfileの内容をPreprosで扱えるように変更しただけです。
+
+- ejsからpugに過去のバージョンを参考に変更しました。
+- iostone,moftone,musubii,shitakocss,sass-dashiのscssファイルをsrc/scssフォルダーに追加しました。
+- project.jsonをsrc/pug/base/_config.pugに変更しました。
+- src/js/app.jsを作成し、1つのファイルにまとめました。
 
 ## Install
 
 ```bash
-$ git clone --depth 1 https://github.com/qrac/qranoko-starter-static.git && cd qranoko-starter-static && rm -rf ./.git ./README.md && mv * .[^\.]* ../ && cd ../ && rm -rf ./qranoko-starter-static
+$ git clone --depth 1 https://github.com/hanahana0201/qranoko-starter-static-for-prepros.git && cd qranoko-starter-static && rm -rf ./.git ./README.md && mv * .[^\.]* ../ && cd ../ && rm -rf ./qranoko-starter-static
 ```
 
 ## Support
@@ -37,9 +33,9 @@ $ git clone --depth 1 https://github.com/qrac/qranoko-starter-static.git && cd q
 
 ## Develop
 
-- MacBook Pro: 13-inch 2016 No-touchbar
-- OS: macOS High Sierra 10.13.6
-- Node.js: v10.9.0
+- Mac mini 2018
+- OS: macOS Mojave 10.14.3
+- Prepros: 6.3.0
 
 ## License
 
@@ -47,5 +43,4 @@ $ git clone --depth 1 https://github.com/qrac/qranoko-starter-static.git && cd q
 
 ## Credit
 
-- Author: [Qrac](https://qrac.jp)
-- Organization: [QRANOKO](https://qranoko.jp)
+- Author: [Centimeter](https://centi-meter.net/)

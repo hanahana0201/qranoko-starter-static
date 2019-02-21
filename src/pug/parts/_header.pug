@@ -1,0 +1,23 @@
+//----------------------------------------------------
+//- Parts: Header
+//----------------------------------------------------
+
+header.section.is-header#header
+  .inner
+    h1.logo
+      a(href="/").logo-link
+        img.logo-img(src=page.climb+path.img+"/logo.svg"+"?ver="+dateNow alt=site.title+" ロゴ")
+    nav.menu.is-global
+      ul.menu-list.js-menu-content
+        each menu_item in menu
+          if menu_item.visible === true
+            li.menu-item
+              a(href=menu_item.url)= menu_item.title
+      .btns
+        button.btn.is-plain.is-menu.is-circle.js-menu-toggle(type="button")
+          svg.icon.is-menu(role="img")
+            title menu
+            use(xlink:href=page.climb+path.img+"/sprite.svg#menu")
+          svg.icon.is-close(role="img")
+            title close
+            use(xlink:href=page.climb+path.img+"/sprite.svg#close")

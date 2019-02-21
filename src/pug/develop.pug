@@ -53,7 +53,7 @@ html(lang="ja")
       h1.title
         span 納品リスト
       h2.subtitle
-        span= setting.name
+        span= project.name
         if version
           | &nbsp;-&nbsp;
           span= "v" + version
@@ -62,7 +62,7 @@ html(lang="ja")
           each val in pages
             if val.develop === true
               li.item
-                a.text.is-link-reverse.is-primary(href=val.url)
+                a.text.is-link-reverse.is-primary(href=val.url style="color:" + project.link_text_color + ";")
                   span= val.title
         if repository
           .btns.is-right.is-xs
