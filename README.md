@@ -14,7 +14,7 @@ Qranoko Starter Staticは、Web制作ユニット「[クラのこ](https://qrano
 - iostone,moftone,musubii,shitakocss,sass-dashiのscssファイルをsrc/scssフォルダーに追加しました。
 - project.jsonをsrc/pug/base/_config.pugに変更しました。
 - src/js/app.jsを作成し、1つのファイルにまとめました。
-- src/imgとsrc/iconは、dist/imageにコピーする
+- src/imgとsrc/iconは、dist/assets/imgとdist/assets/iconにコピーする
 
 ## Install
 
