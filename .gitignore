@@ -5,6 +5,7 @@
 # Invisible file
 .DS_Store
 Thumbs.db
+.idea
 
 # Logs
 *.log
