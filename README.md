@@ -19,10 +19,10 @@ Qranoko Starter Staticは、Web制作ユニット「[クラのこ](https://qrano
 ## Install
 
 ```bash
-$ git clone --depth 1 https://github.com/hanahana0201/qranoko-starter-static.git && cd qranoko-starter-static && rm -rf ./.git ./README.md && mv * .[^\.]* ../ && cd ../ && rm -rf ./qranoko-starter-static && mkdir dist/assets/img && cp -pR src/img/* dist/assets/img && mkdir dist/assets/icon && cp -pR src/icon/* dist/assets/icon
+$ git clone --depth 1 https://github.com/hanahana0201/qranoko-starter-static.git && cd qranoko-starter-static && rm -rf ./.git ./README.md && mv * .[^\.]* ../ && cd ../ && rm -rf ./qranoko-starter-static && mkdir -p dist/assets/img dist/assets/icon && cp -pR src/img/* dist/assets/img && cp -pR src/icon/* dist/assets/icon
 ```
 ```fish
-$ git clone --depth 1 https://github.com/hanahana0201/qranoko-starter-static.git; and cd qranoko-starter-static; and rm -rf ./.git ./README.md; and mv * .* ../; and cd ../; and rm -rf ./qranoko-starter-static; and mkdir dist/assets/img; and cp -pR src/img/* dist/assets/img; and mkdir dist/assets/icon; and cp -pR src/icon/* dist/assets/icon;
+$ git clone --depth 1 https://github.com/hanahana0201/qranoko-starter-static.git; and cd qranoko-starter-static; and rm -rf ./.git ./README.md; and mv * .* ../; and cd ../; and rm -rf ./qranoko-starter-static; and mkdir -p dist/assets/img dist/assets/icon; and cp -pR src/img/* dist/assets/img; and cp -pR src/icon/* dist/assets/icon;
 ```
 
 ## Support
